@@ -3,4 +3,6 @@ class User < ActiveRecord::Base
   validates :username, :email, :password, presence: true
   validates :username, :email, uniqueness: true
   validates :username, :password, length: { in: 6..10 }
+
+  #dependent destroy, has_many
 end
