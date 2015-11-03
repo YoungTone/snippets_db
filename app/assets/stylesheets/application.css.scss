@@ -21,7 +21,7 @@
 @import url(https://fonts.googleapis.com/css?family=Lato);
 
 
-.snipper_heading {
+.snipper_heading, .navbar-brand {
 	display: inline-block;
 	padding: 0.2em;
 	font-family: 'Grand Hotel', sans-serif;
@@ -36,6 +36,11 @@
 	background: linear-gradient(to bottom,  #f3c5bd 0%,#e86c57 50%,#ea2803 51%,#ff6600 75%,#c72200 100%);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
+}
+
+.navbar-brand {
+	font-size: 2.6em;
+	padding-top: 15px;
 }
 
 .page-header {
