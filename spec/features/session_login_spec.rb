@@ -5,7 +5,6 @@ feature "Login" do
     visit login_path
   end
   scenario "logging in without username or password" do
-    save_and_open_page
     within(".login-form") do
       fill_in "username", with: ''
       fill_in 'password', with: ''
