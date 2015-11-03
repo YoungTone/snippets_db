@@ -1,18 +1,11 @@
 Rails.application.routes.draw do
 
-  get 'users/signup'
-
-  get 'users/account'
-
-  get 'users/signup'
-
-  get 'users/account'
-
-root "snippets#index"
+root "sessions#index"
 get '/login', to: "sessions#login", as: 'login'
 post '/login', to: "sessions#attempt_login"
 delete '/logout', to: "sessions#logout", as: 'logout'
 get '/signup', to: "users#signup", as: 'signup'
+get '/home', to: "sessions#index", as: 'home'
 post '/signup', to: "users#create"
 
   resources :users, except: ['index', 'new'] do

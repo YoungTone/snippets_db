@@ -5,7 +5,6 @@ feature 'Sign Up' do
     visit signup_path
   end
 scenario "signing up without a username or password" do
-  save_and_open_page
   within("form") do
     fill_in 'user_username', with: ''
     fill_in 'user_password', with: ''
