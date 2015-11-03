@@ -17,5 +17,8 @@
   <%= f.password_field :password, class: "form-control", required: true %>
 </div>
 <%= f.submit "Sign Up", id: "submit-user", class:"btn btn-block btn-success text-center" %>
-
+<div class="form-group">
+	<br>
+	<p>Already an account? <%= link_to "Login here", login_path %></p>
+</div>
 <% end %>

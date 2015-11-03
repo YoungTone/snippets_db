@@ -1,0 +1,64 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootswatch/Lumen/variables";
+@import "bootstrap";
+@import "bootswatch/Lumen/bootswatch";
+@import url(https://fonts.googleapis.com/css?family=Grand+Hotel);
+@import url(https://fonts.googleapis.com/css?family=Lato);
+
+
+.snipper_heading, .navbar-brand {
+	display: inline-block;
+	padding: 0.2em;
+	font-family: 'Grand Hotel', sans-serif;
+	font-size: 8em;
+	font-weight: bold;
+	background: #f3c5bd;
+	background: -moz-linear-gradient(top,  #f3c5bd 0%, #e86c57 50%, #ea2803 51%, #ff6600 75%, #c72200 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f3c5bd), color-stop(50%,#e86c57), color-stop(51%,#ea2803), color-stop(75%,#ff6600), color-stop(100%,#c72200));
+	background: -webkit-linear-gradient(top,  #f3c5bd 0%,#e86c57 50%,#ea2803 51%,#ff6600 75%,#c72200 100%);
+	background: -o-linear-gradient(top,  #f3c5bd 0%,#e86c57 50%,#ea2803 51%,#ff6600 75%,#c72200 100%);
+	background: -ms-linear-gradient(top,  #f3c5bd 0%,#e86c57 50%,#ea2803 51%,#ff6600 75%,#c72200 100%);
+	background: linear-gradient(to bottom,  #f3c5bd 0%,#e86c57 50%,#ea2803 51%,#ff6600 75%,#c72200 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.navbar-brand {
+	font-size: 2.6em;
+	padding-top: 15px;
+}
+
+.page-header {
+	padding:0;
+	margin:0;
+	border-bottom: none;
+}
+
+.page-header small {
+	font-family: 'Lato', sans-serif;
+	font-size: 2em;
+	color: #777;
+	display: inline-block;
+}
+
+.nav .glyphicon {
+	font-size: 1.6em;
+	font-weight: bold;
+	padding: 5px;
+}
+
