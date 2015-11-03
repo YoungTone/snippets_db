@@ -17,6 +17,21 @@ class SnippetsController < ApplicationController
 		end
 	end
 
+	def attempt_create
+    if params[:code].present?
+      found_user = Snippet.where(code: params[:code]).first
+      if found_user && found_user.authenticate(params[:password])
+         session[:user_id] = found_user.id
+         redirect_to root_path, flash: {notice: "Welcome back #{found_user.username}!"}
+      else
+        flash[:notice] = "Incorrect username or password"
+        redirect_to login_path
+      end
+      else
+        flash[:notice] = "Snippet can't be blank"
+        redirect_to login_path
+    end
+
 	def show
 		@snippet = Snippet.find params[:id]
 	end
