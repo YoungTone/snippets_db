@@ -5,7 +5,7 @@ feature 'Sign Up' do
     visit signup_path
   end
 scenario "signing up without a username or password" do
-  within("form") do
+  within(".signup-form") do
     fill_in 'user_username', with: ''
     fill_in 'user_password', with: ''
   end
@@ -15,7 +15,7 @@ end
 
 scenario "signing up with an exisiting username" do
   test_user = User.create(email: 'test@test.com', password: 'testing', photo: 'test', username: 'testing')
-  within("form") do
+  within(".signup-form") do
     fill_in 'user_username', with: test_user.username
     fill_in 'user_password', with: 'whatever'
   end
@@ -24,7 +24,7 @@ scenario "signing up with an exisiting username" do
   end
 
 scenario "signing up with a correct username and password" do
-  within("form") do
+  within(".signup-form") do
     fill_in 'user_username', with: 'testing'
     fill_in 'user_password', with: 'testing'
   end

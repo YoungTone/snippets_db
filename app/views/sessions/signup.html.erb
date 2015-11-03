@@ -2,7 +2,7 @@
 <div class="notice"><%= flash[:notice] %></div>
 <% end %>
 
-<%= form_for @user, url: signup_path do |f| %>
+<%= form_for @user, url: signup_path, html: {class: "signup-form"} do |f| %>
 <%= render partial: "shared/errors", locals:{instance: @user} %>
 <div class="form-group">
   <%= f.label :username, class: "control-label" %>

@@ -6,7 +6,7 @@ feature "Login" do
   end
   scenario "logging in without username or password" do
     save_and_open_page
-    within("form") do
+    within(".login-form") do
       fill_in "username", with: ''
       fill_in 'password', with: ''
     end
@@ -16,7 +16,7 @@ feature "Login" do
 
   scenario 'logging in with incorrect username or password' do
     test_user = User.create(email: 'test@test.com', password: 'testing', photo: 'test', username: 'testing')
-    within("form") do
+    within(".login-form") do
       fill_in 'username', with: test_user.username
       fill_in 'password', with: 'whatever'
     end
@@ -34,7 +34,7 @@ end
 def login_user
   @user = User.create(email: 'test@test.com', password: 'testing', photo: 'test', username: 'testing')
   visit login_path
-  within "form" do
+  within ".login-form" do
     fill_in "username", with: @user.username
     fill_in "password", with: @user.password
   end
