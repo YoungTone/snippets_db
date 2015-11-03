@@ -12,5 +12,5 @@ RSpec.describe Snippet, type: :model do
   it { is_expected.to validate_uniqueness_of :code }
   it { is_expected.to validate_length_of :code }
   it { is_expected.to belong_to :user }
-  xit { is_expected.to have_many :tags }
+  it { is_expected.to have_many :tags }
 end
