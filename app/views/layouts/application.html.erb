@@ -7,20 +7,21 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= link_to "Logout", logout_path, method: :delete%>
 
-<% flash.each do |key, value| %>
-  <% if key == "notice" %>
-    <%= content_tag :div, value, class: "text-center alert alert-warning" %>
-  <% elsif key == "alert" %>
-    <%= content_tag :div, value, class: "text-center alert alert-danger" %>
-  <% else %>
-    <%= content_tag :div, value, class: "text-center alert alert-success" %>
-  <% end %>
-<% end %>
-
-<div class="content">
-<%= yield %>
+<div class="container">
+	<div class="col-md-12">
+		<% flash.each do |key, value| %>
+		  <% if key == "notice" %>
+		    <%= content_tag :div, value, class: "text-center alert alert-warning" %>
+		  <% elsif key == "alert" %>
+		    <%= content_tag :div, value, class: "text-center alert alert-danger" %>
+		  <% else %>
+		    <%= content_tag :div, value, class: "text-center alert alert-success" %>
+		  <% end %>
+		<% end %>
+	  	<%= link_to "Logout", logout_path, method: :delete%>
+		<%= yield %>
+	</div>
 </div>
 
 </body>

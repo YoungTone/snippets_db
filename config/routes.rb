@@ -4,7 +4,7 @@ root "sessions#index"
 get '/login', to: "sessions#login", as: 'login'
 post '/login', to: "sessions#attempt_login"
 delete '/logout', to: "sessions#logout", as: 'logout'
-get '/signup', to: "users#signup", as: 'signup'
+get '/signup', to: "sessions#signup", as: 'signup'
 get '/home', to: "sessions#index", as: 'home'
 post '/signup', to: "users#create"
 

@@ -1,26 +1,44 @@
 class SessionsController < ApplicationController
 
+  before_action :prevent_login_signup, only: [:signup, :create, :login, :attempt_login]
+
   def index
   end
 
+  def signup
+    @user = User.new
+  end
+
   def login
+  end
+
+  def create
+    @user = User.create user_params
+    if @user.save
+      session[:user_id] = @user.id
+      flash[:notice] = 'Successfully created!'
+      redirect_to root_path
+    else
+      flash[:alert] = 'Username must be at least six characters in length'
+      render :signup
+    end
   end
 
   def attempt_login
     if params[:username].present? && params[:password].present?
       found_user = User.where(username: params[:username]).first
       if found_user && found_user.authenticate(params[:password])
-         session[:id] = found_user.id
+         session[:user_id] = found_user.id
          redirect_to root_path, flash: {notice: "Welcome back #{found_user.username}!"}
       else
         flash[:notice] = "Incorrect username or password"
         redirect_to login_path
-        end
+      end
       else
         flash[:notice] = "Please enter valid username and password"
         redirect_to login_path
-      end
-end
+    end
+  end
 
 def logout
   session[:user_id] = nil
@@ -37,15 +55,5 @@ def user_params
     :password
   )
 end
-def confirm_logged_in
-  unless session[:user_id]
-    redirect_to login_path, alert: 'Please Log In'
-  end
-end
 
-def prevent_logged_in
-  if session[:user_id]
-    redirect_to home_path
-    end
-  end
 end
