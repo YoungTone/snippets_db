@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ############# => INITIAL USER <= ###############
 
 test_user = User.create(email: 'test@test.com', password: 'testing', photo: 'test', username: 'testing')
@@ -154,3 +155,27 @@ Tag.create(name: "Vim Script", type: "vim")
 # Tag.create(name: "XL", type: "xl")
 # Tag.create(name: "XQuery", type: "xpath")
 # Tag.create(name: "Zephir", type: "zep")
+=======
+
+##User
+test_user = User.create(email: 'test@test.com', password: 'testing', photo: 'test', username: 'testing')
+
+##Language
+test_language = Language.create(name: "Ruby", highlight_class: "rb")
+
+##Editor
+test_editor = Editor.create(icon_src: "http://bungeshea.com/wp-content/uploads/sublime-text.png", name: "Sublime")
+
+##Snippet
+
+test_snippet = Snippet.create(name: 'Clownhat', description: 'ERB tags for rails', code: '<snippet>
+  <content><![CDATA[
+<%= %>
+]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>ch</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <!-- <scope>source.python</scope> -->
+</snippet>
+', user_id: User.sample, language_id: Language.sample, editor_id: Editor.sample)
+>>>>>>> 015c52e0f13e5013f87d33ee04432e642cc76e06
