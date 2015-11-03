@@ -2,7 +2,7 @@
 <div class="notice"><%= flash[:notice] %></div>
 <% end %>
 
-<%= form_tag login_path do  %>
+<%= form_tag login_path, class: "login-form" do  %>
 <div class="form-group">
   <%= label_tag :username, nil, class: "control-label" %>
   <%= text_field_tag :username, nil, class: "form-control", required: true %>
