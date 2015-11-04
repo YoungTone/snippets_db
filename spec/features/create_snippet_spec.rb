@@ -90,7 +90,7 @@ feature 'editing a snippet' do
     end
     click_button "Confirm Edit"
     expect(page).to have_content "Edit Succesful"
-    expect(page.current_path).to eq user_snippet_path[user]
+    expect(page.current_path).to eq user_snippets_path(user)
   end
   scenario "editing unsuccesfully" do
     within (".snippet_form") do
