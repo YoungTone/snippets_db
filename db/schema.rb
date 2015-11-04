@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20151104022300) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "icon"
   end
 
   create_table "snippets", force: :cascade do |t|
