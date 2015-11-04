@@ -1,20 +1,22 @@
 class SnippetsController < ApplicationController
 	def index
-		@snippets = Snippet.all
-		render :index
+		@user = User.find params[:user_id]
+		@snippets = @user.snippets
 	end
 
 	def new
-		@snippet = Snippet.new
-		@languages = Language.all.map {|lang| lang.name}
+		@user = User.find params[:user_id]
+		@snippet = @user.snippets.new
+		@languages = Language.all
 		@editors = Editor.all
-		@user = User.first # this is only for tests
+		# @user = User.first # this is only for tests
 	end
 
 	def create
-		@snippet = Snippet.new(snippet_params)
+		@user = User.find params[:user_id]
+		@snippet = @user.snippets.new(snippet_params)
 		if @snippet.save
-			redirect_to user_snippet_path[:user_id], flash: {notice: "Thanks for contributing"}
+			redirect_to user_snippets_path params[:user_id], flash: {notice: "Thanks for contributing"}
 		elsif params[:code].present? && Snippet.where(code: params[:code]).first
 			flash[:notice] = "A snippet already exisits with your code"
 		else

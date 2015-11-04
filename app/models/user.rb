@@ -4,5 +4,6 @@ class User < ActiveRecord::Base
   validates :username, :email, uniqueness: true
   validates :username, :password, length: { in: 6..10 }
 
-  # has_many :snippets, :favorites, dependent: :destroy
+  has_many :snippets
+  # has_many :favorites, dependent: :destroy
 end

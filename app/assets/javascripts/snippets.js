@@ -31,7 +31,8 @@ $(function(){
 			});
 	});
 		
-	$("select").on('change', function(){
+	$("select:first").on('change', function(){
+
 		var selection = $(this).find('option:selected').val().toLowerCase();
 
 		if(special_mimetypes[selection]) {
