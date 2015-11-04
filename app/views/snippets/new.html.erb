@@ -1,2 +1,22 @@
-<h1>Snippets#new</h1>
-<p>Find me in app/views/snippets/new.html.erb</p>
+<%= form_for @snippet, url: new_user_snippet_path(current_user), html:{class:"snippet-form", role:"form"} do |f| %>
+	<div class="form-group">
+		<%= f.label "Snippet Name" %>
+		<%= f.text_field :name, class:"form-control", autofocus: true %>
+	</div>
+	<div class="form-group">
+		<%= f.label :description  %>
+		<%= f.text_field :description, class:"form-control" %>
+	</div>
+	<div class="form-group">
+		<%= f.label :code, name: "code"  %>
+		<%= f.text_area :code, name: "code", id: "codemirror" ,class: "form-control" %>
+	</div>
+	
+	<div class="form-group actions">
+		<%= f.submit class:"btn btn-primary" %>
+	</div>
+	<div>
+		<%= f.button "Save Code", class: "btn btn-default" %>
+	</div>
+<% end %>
+<%= javascript_tag "render_code_mirror('javascript')" %>
