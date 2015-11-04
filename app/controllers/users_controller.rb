@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_action :prevent_login_signup, only: [:create]
+
   def account
   end
 
@@ -7,6 +9,18 @@ class UsersController < ApplicationController
   end
 
   def delete
+  end
+
+  def create
+    @user = User.create user_params
+    if @user.save
+      session[:user_id] = @user.id
+      flash[:notice] = 'Successfully created!'
+      redirect_to root_path
+    else
+      flash[:alert] = 'Username must be at least six characters in length'
+      redirect_to signup_path
+    end
   end
 
   private

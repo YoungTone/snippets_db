@@ -12,18 +12,6 @@ class SessionsController < ApplicationController
   def login
   end
 
-  def create
-    @user = User.create user_params
-    if @user.save
-      session[:user_id] = @user.id
-      flash[:notice] = 'Successfully created!'
-      redirect_to root_path
-    else
-      flash[:alert] = 'Username must be at least six characters in length'
-      render :signup
-    end
-  end
-
   def attempt_login
     if params[:username].present? && params[:password].present?
       found_user = User.where(username: params[:username]).first
