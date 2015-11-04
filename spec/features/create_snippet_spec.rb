@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'creating a snippet' do
   background do
-    visit new_snippet_path
+    visit new_user_snippet_path(user)
   end
 
   let(:user) {User.create(email: 'test@test.com', password: 'testing', photo: 'test', username: 'testing')}
