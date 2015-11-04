@@ -33,8 +33,12 @@ class SnippetsController < ApplicationController
 		@snippet.update snippet_params
 		redirect_to snippets_path[:id]
 		if @snippet.save
-			redirect_to user_snippets_path[:user_id], notice: "Updated"
+			flash[:notice] = "Edit Succesful"
+			redirect_to user_snippets_path[:user_id]
+		elsif params[:code].present? && Snippet.where(code: params[:code]).first
+			flash[:notice] = "A snippet already exisits with your code"
 		else
+			flash[:notice] = "Snippet form can't be blank"
 			render :edit
 		end
 	end
@@ -42,7 +46,7 @@ class SnippetsController < ApplicationController
 	def destroy
 		@snippet = Snippet.find_by_id params[:id]
 		@snippet.destroy
-		redirect_to snippets_path
+		redirect_to user_snippets_path[:user_id]
 	end
 
 	private
