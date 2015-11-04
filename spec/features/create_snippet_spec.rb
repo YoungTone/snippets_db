@@ -32,7 +32,7 @@ feature 'creating a snippet' do
     end
     click_button "Create Snippet"
     expect(page).to have_content "Thanks for contributing"
-    expect(page.current_path).to eq user_snippet_path(user)
+    expect(page.current_path).to eq user_snippets_path(user)
   end
   scenario "creating unsuccesfully" do
     within (".snippet_form") do
@@ -90,7 +90,7 @@ feature 'editing a snippet' do
     end
     click_button "Confirm Edit"
     expect(page).to have_content "Edit Succesful"
-    expect(page.current_path).to eq user_snippet_path[user]
+    expect(page.current_path).to eq user_snippets_path(user)
   end
   scenario "editing unsuccesfully" do
     within (".snippet_form") do
@@ -115,6 +115,17 @@ feature 'editing a snippet' do
     expect(page).to have_content "A snippet already exisits with your code"
   end
 end
+
+feature 'deleting a snippet' do
+  end
+  scenario "succesfully deleting" do
+    expect(page.current_path).to eq edit_snippet_path
+    clink_link "Delete Snippet"
+    expect(page.current_path).to eq user_snippets_path(user)
+  end
+
+
+
 
 
 
