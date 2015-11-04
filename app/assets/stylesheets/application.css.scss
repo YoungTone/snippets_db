@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require codemirror
  */
 
 @import "bootswatch/Lumen/variables";
@@ -117,5 +118,12 @@
 	background: #666;
 	color: #FFF;
 	border-radius: 2px;
+}
+
+/* --------------- CODE MIRROR ---------------- */
+
+.CodeMirror {
+	border: 2px solid #DDD;
+	border-radius: 5px;
 }
 
