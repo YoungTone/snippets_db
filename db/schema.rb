@@ -45,6 +45,13 @@ ActiveRecord::Schema.define(version: 20151103214805) do
   add_index "snippets", ["language_id"], name: "index_snippets_on_language_id", using: :btree
   add_index "snippets", ["user_id"], name: "index_snippets_on_user_id", using: :btree
 
+  create_table "tags", force: :cascade do |t|
+    t.string   "name"
+    t.string   "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "password"
