@@ -1,181 +1,88 @@
-<<<<<<< HEAD
 ############# => INITIAL USER <= ###############
 
 test_user = User.create(email: 'test@test.com', password: 'testing', photo: 'test', username: 'testing')
 
 ############# => TEXT EDITOR TAG List <= ###############
 
-Tag.create(name: "Atom", type: "editor")
-Tag.create(name: "Brackets", type: "editor")
-Tag.create(name: "Sublime", type: "editor")
-Tag.create(name: "Commande Line", type: "editor")
+Editor.create(name: "Atom", icon_src: "")
+Editor.create(name: "Brackets", icon_src: "")
+Editor.create(name: "Sublime", icon_src: "")
+Editor.create(name: "Commande Line", icon_src: "")
 
-############# => CRAZY LONG CATEGORY(TAG) LIST <= ###############
+############# => LANGUAGE LIST <= ###############
 
-# Tag.create(name: "Access logs", type: "accesslog")
-# Tag.create(name: "ARM assembler",type: "arm")
-# Tag.create(name: "AVR assembler", type: "arm")
-# Tag.create(name: "ActionScript", type: "as")
-# Tag.create(name: "Apache", type: "apache")
-# Tag.create(name: "AppleScript", type: "applescript")
-# Tag.create(name: "AsciiDock", type: "adoc")
-Tag.create(name: "AspectJ", type: "aspecj")
-# Tag.create(name: "AutoHotkey", type: "autohotkey")
-# Tag.create(name: "AutoIt", type: "autoit")
-# Tag.create(name: "Axapta", type: "axapta")
-Tag.create(name: "Bash", type: "bash")
-Tag.create(name: "zsh", type: "zsh")
-# Tag.create(name: "Brainfuck", type: "bf")
-Tag.create(name: "C#", type: "cs")
-Tag.create(name: "C++", type: "cpp")
-# Tag.create(name: "C/AL", type: "cal")
-Tag.create(name: "CMake", type: "cmake")
-Tag.create(name: "CSS", type: "css")
-# Tag.create(name: "Cap'n Proto", type: "capnp")
-# Tag.create(name: "Clojure", type: "clj")
-Tag.create(name: "CoffeeScript", type: "iced")
-# Tag.create(name: "Crmsh", type: "crm")
-# Tag.create(name: "Crystal", type: "cr")
-Tag.create(name: "D", type: "d")
-# Tag.create(name: "DNS Zone file", type: "dns")
-# Tag.create(name: "DOS", type: "bat")
-# Tag.create(name: "Dart", type: "dart")
-# Tag.create(name: "Delphi", type: "delphi")
-# Tag.create(name: "Diff", type: "diff")
-Tag.create(name: "Django", type: "django")
-Tag.create(name: "Dockerfile", type: "docker")
-# Tag.create(name: "Dust", type: "dust")
-# Tag.create(name: "Elixir", type: "elixir")
-# Tag.create(name: "Elm", type: "elm")
-Tag.create(name: "Erlang", type: "erl")
-Tag.create(name: "F#", type: "fs")
-# Tag.create(name: "FIX", type: "fix")
-# Tag.create(name: "Fortran", type: "fortran")
-# Tag.create(name: "G-Code", type: "nc")
-# Tag.create(name: "Gams", type: "gams")
-# Tag.create(name: "Gherkin", type: "gherkin")
-Tag.create(name: "Go", type: "go")
-# Tag.create(name: "Golo", type: "golo")
-Tag.create(name: "Gradle", type: "gradle")
-Tag.create(name: "Groovy", type: "groovy")
-Tag.create(name: "HTML", type: "html")
-	Tag.create(name: "Bootstrap", type: "html")
-	Tag.create(name: "Foundation", type: "html")
-Tag.create(name: "XML", type: "xml")
-Tag.create(name: "RSS", type: "rss")
-Tag.create(name: "Atom", type: "atom")
-# Tag.create(name: "Property List", type: "plist")
-Tag.create(name: "HTTP", type: "http")
-Tag.create(name: "Haml", type: "haml")
-Tag.create(name: "Handlebars", type: "hbs")
-# Tag.create(name: "Haskell", type: "hs")
-Tag.create(name: "Haxe", type: "hx")
-# Tag.create(name: "Ini", type: "ini")
-# Tag.create(name: "Inform7", type: "i7")
-# Tag.create(name: "IRPF90", type: "irpf90")
-Tag.create(name: "JSON", type: "json")
-Tag.create(name: "Java", type: "java")
-Tag.create(name: "JavaScript", type: "js")
-	Tag.create(name: "jQuery", type: "js")
-	Tag.create(name: "Angular.js", type: "js")	
-	Tag.create(name: "React.js", type: "js")	
-	Tag.create(name: "Knockout.js", type: "js")	
-	Tag.create(name: "Backbone.js", type: "js")	
-	Tag.create(name: "Ember.js", type: "js")	
-	Tag.create(name: "Node.js", type: "js")	
-	Tag.create(name: "Express.js", type: "js")	
-	Tag.create(name: "Skel.js", type: "js")
-# Tag.create(name: "Lasso", type: "lasso")
-Tag.create(name: "Less", type: "less")
-# Tag.create(name: "Lisp", type: "lisp")
-# Tag.create(name: "LiveCode Server", type: "livecodeserver")
-# Tag.create(name: "LiveScript", type: "livescript")
-Tag.create(name: "Lua", type: "lua")
-# Tag.create(name: "Makefile", type: "mak")
-Tag.create(name: "Markdown", type: "mkdown")
-# Tag.create(name: "Mathematica", type: "mma")
-# Tag.create(name: "Matlab", type: "matlab")
-# Tag.create(name: "Maya Embedded Language", type: "mel")
-# Tag.create(name: "Mercury", type: "mercury")
-# Tag.create(name: "Mizar", type: "mizar")
-# Tag.create(name: "Mojolicious", type: "mojolicious")
-# Tag.create(name: "Monkey", type: "monkey")
-# Tag.create(name: "NSIS", type: "nsis")
-# Tag.create(name: "Nginx", type: "nginx")
-# Tag.create(name: "Nimrod", type: "nim")
-# Tag.create(name: "Nix", type: "nix")
-# Tag.create(name: "OCaml", type: "ml")
-Tag.create(name: "Object C", type: "objc")
-Tag.create(name: "OpenGL Shading Language", type: "glsl")
-# Tag.create(name: "OpenSCAD", type: "scad")
-# Tag.create(name: "Oracle Rules Language", type: "ruleslanguage")
-# Tag.create(name: "Oxygene", type: "oxygene")
-# Tag.create(name: "PF", type: "pf")
-Tag.create(name: "PHP", type: "php")
-# Tag.create(name: "Parser3", type: "parser3")
-# Tag.create(name: "Perl", type: "perl")
-Tag.create(name: "PowerShell", type: "powershell")
-# Tag.create(name: "Processing", type: "processing")
-# Tag.create(name: "Prolog", type: "prolog")
-# Tag.create(name: "Protocol Buffers", type: "protobuf")
-# Tag.create(name: "Puppet", type: "puppet")
-Tag.create(name: "Python", type: "python")
-# Tag.create(name: "Python profiler results", type: "profile")
-# Tag.create(name: "Q", type: "kdb")
-Tag.create(name: "R", type: "r")
-# Tag.create(name: "RenderMan RIB", type: "rib")
-# Tag.create(name: "RenderMan RSL", type: "rsl")
-# Tag.create(name: "Roboconf", type: "graph")
-Tag.create(name: "Ruby", type: "ruby")
-# Tag.create(name: "Rust", type: "rust")
-Tag.create(name: "SCSS/Sass", type: "scss")
-Tag.create(name: "SQL", type: "sql")
-# Tag.create(name: "STEP Part 21", type: "step")
-Tag.create(name: "Scala", type: "scala")
-# Tag.create(name: "Scheme", type: "scheme")
-# Tag.create(name: "Scilab", type: "sci")
-# Tag.create(name: "Smali", type: "smali")
-# Tag.create(name: "Smalltalk", type: "st")
-# Tag.create(name: "Stata", type: "stata")
-# Tag.create(name: "Stylus", type: "stylus")
-Tag.create(name: "Swift", type: "swift")
-# Tag.create(name: "Tcl", type: "tcl")
-# Tag.create(name: "TeX", type: "tex")
-# Tag.create(name: "Thrift", type: "thrift")
-# Tag.create(name: "TP", type: "tp")
-# Tag.create(name: "Twig", type: "twig")
-Tag.create(name: "TypeScript", type: "typescript")
-Tag.create(name: "VB.Net", type: "vb")
-Tag.create(name: "VBScript", type: "vbs")
-# Tag.create(name: "VHDL", type: "vhdl")
-# Tag.create(name: "Vala", type: "vala")
-# Tag.create(name: "Verilog", type: "v")
-Tag.create(name: "Vim Script", type: "vim")
-# Tag.create(name: "x86 Assembly", type: "x86asm")
-# Tag.create(name: "XL", type: "xl")
-# Tag.create(name: "XQuery", type: "xpath")
-# Tag.create(name: "Zephir", type: "zep")
-=======
+Language.create(name: "C", mode: "text/x-csrc", icon: "src")
 
-##User
-test_user = User.create(email: 'test@test.com', password: 'testing', photo: 'test', username: 'testing')
+Language.create(name: "C++", mode: "tex/x-c++scr", icon: "src")
 
-##Language
-test_language = Language.create(name: "Ruby", highlight_class: "rb")
+Language.create(name: "C#", mode: "text/x-csharp", icon: "src")
 
-##Editor
-test_editor = Editor.create(icon_src: "http://bungeshea.com/wp-content/uploads/sublime-text.png", name: "Sublime")
+Language.create(name: "Objective-C", mode: "text/x-objectivec", icon: "src")
 
-##Snippet
+Language.create(name: "Scala", mode: "text/x-scala", icon: "src")
 
-test_snippet = Snippet.create(name: 'Clownhat', description: 'ERB tags for rails', code: '<snippet>
-  <content><![CDATA[
-<%= %>
-]]></content>
-  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-  <tabTrigger>ch</tabTrigger>
-  <!-- Optional: Set a scope to limit where the snippet will trigger -->
-  <!-- <scope>source.python</scope> -->
-</snippet>
-', user_id: User.sample, language_id: Language.sample, editor_id: Editor.sample)
->>>>>>> 015c52e0f13e5013f87d33ee04432e642cc76e06
+Language.create(name: "Coffescript", mode: "text/x-coffeescript", icon: "src")
+
+Language.create(name: "CSS", mode: "text/x-css", icon: "src")
+
+Language.create(name: "SCSS", mode: "text/x-scss", icon: "src")
+
+Language.create(name: "LESS", mode: "text/x-less", icon: "src")
+
+Language.create(name: "Dockerfile", mode: "text/x-dockerfile", icon: "src")
+
+Language.create(name: "Django", mode: "text/x-django", icon: "src")
+
+Language.create(name: "HAML", mode: "text/x-haml", icon: "src")
+
+Language.create(name: "Handlebars", mode: "text/x-handlesbars-template", icon: "src")
+
+Language.create(name: "EJS", mode: "application/x-ejs", icon: "src")
+
+Language.create(name: "ASP.NET", mode: "text/x-zspx", icon: "src")
+
+Language.create(name: "JSP", mode: "text/x-jsp", icon: "src")
+
+Language.create(name: "HTTP", mode: "message/http", icon: "src")
+
+Language.create(name: "HTML", mode: "text/html", icon: "src")
+
+Language.create(name: "Java", mode: "text/x-java", icon: "src")
+
+Language.create(name: "Jade", mode: "text/x-jade", icon: "src")
+
+Language.create(name: "JavaScript", mode: "text/javascript", icon: "src")
+
+Language.create(name: "Angular.js", mode: "text/javascript", icon: "src")
+
+Language.create(name: "Backbone.js", mode: "text/javascript", icon: "src")
+
+Language.create(name: "Ember.js", mode: "text/javascript", icon: "src")
+
+Language.create(name: "Knockout.js", mode: "text/javascript", icon: "src")
+
+Language.create(name: "React.js", mode: "text/javascript", icon: "src")
+
+Language.create(name: "jQuery", mode: "text/javascript", icon: "src")
+
+Language.create(name: "Perl", mode: "text/x-perl", icon: "src")
+
+Language.create(name: "Wrapped PHP", mode: "application/x-httpd-php", icon: "src")
+
+Language.create(name: "PHP", mode: "text/x-php", icon: "src")
+
+Language.create(name: "Python", mode: "text/x-python", icon: "src")
+
+Language.create(name: "R", mode: "text/x-rsrc", icon: "src")
+
+Language.create(name: "Ruby", mode: "text/x-ruby", icon: "src")
+
+Language.create(name: "Sass", mode: "text/x-sass", icon: "src")
+
+Language.create(name: "Shell", mode: "text/x-sh", icon: "src")
+
+Language.create(name: "zsh", mode: "text/x-xh", icon: "src")
+
+Language.create(name: "SQL", mode: "text/x-sql", icon: "src")
+
+Language.create(name: "Swift", mode: "text/x-swift", icon: "src")
