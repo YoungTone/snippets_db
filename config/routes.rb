@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'snippets/index'
+
+  get 'snippets/show'
+
+  get 'snippets/new'
+
+  get 'snippets/edit'
+
 root "sessions#index"
 get '/login', to: "sessions#login", as: 'login'
 post '/login', to: "sessions#attempt_login"

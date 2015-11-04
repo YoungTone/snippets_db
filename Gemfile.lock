@@ -239,7 +239,6 @@ DEPENDENCIES
   byebug
   capybara
   capybara-email
-  coffee-rails (~> 4.1.0)
   guard-rspec
   jbuilder (~> 2.0)
   jquery-rails
