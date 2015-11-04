@@ -117,12 +117,13 @@ feature 'editing a snippet' do
 end
 
 feature 'deleting a snippet' do
-  end
+  
   scenario "succesfully deleting" do
     expect(page.current_path).to eq edit_snippet_path
     clink_link "Delete Snippet"
     expect(page.current_path).to eq user_snippets_path(user)
   end
+end
 
 
 
