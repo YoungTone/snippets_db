@@ -8,7 +8,72 @@
 </head>
 <body>
 
-<%= yield %>
+<nav class="navbar navbar-default">
+  <div class="container">
+	<div class="col-md-12">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Snipper</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+      <li><%= link_to "All Snippets", root_path %></li>
+      <li><a href="#">Popular</a></li>
+      <li><a href="#">New</a></li>
+
+      </ul>
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search snippets..">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+
+      <ul class="nav navbar-nav navbar-right">
+				<% if current_user %>
+					<li class="navbar-text"><%= image_tag("#{current_user.photo}", class: "img-rounded avatar") %></li>
+					<li><a href="#">Welcome, <%= current_user.username %></a></li>
+					<li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Actions<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Add New Snippet</a></li>
+            <li><a href="#">View My Snippets</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Edit Profile</a></li>
+          </ul>
+        </li>
+					<li><%= link_to "Logout", logout_path, method: :delete%></li>
+				<% else %>
+					<li><%= link_to "Login", login_path %></li>
+				<% end %>
+      </ul>
+    </div>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div class="container">
+	<div class="col-md-12">
+		<% flash.each do |key, value| %>
+		  <% if key == "notice" %>
+		    <%= content_tag :div, value, class: "text-center alert alert-warning" %>
+		  <% elsif key == "alert" %>
+		    <%= content_tag :div, value, class: "text-center alert alert-danger" %>
+		  <% else %>
+		    <%= content_tag :div, value, class: "text-center alert alert-success" %>
+		  <% end %>
+		<% end %>
+		<%= yield %>
+	</div>
+</div>
 
 </body>
 </html>
