@@ -1,13 +1,15 @@
 require 'rails_helper'
 
 feature 'creating a snippet' do
-  background do
-    visit new_user_snippet_path(user)
-  end
-
   let(:user) {User.create(email: 'test@test.com', password: 'testing', photo: 'test', username: 'testing')}
 
-  let(:language) {Language.create(name: "Ruby", highlight_class: "rb")}
+  background do
+    visit new_user_snippet_path(user)
+    
+  end
+
+
+  let(:language) {Language.create(name: "Ruby", mode: "text/x-ruby")}
 
   let(:editor) {Editor.create(icon_src: "http://bungeshea.com/wp-content/uploads/sublime-text.png", name: "Sublime")}
 
@@ -20,14 +22,14 @@ feature 'creating a snippet' do
   <!-- Optional: Set a scope to limit where the snippet will trigger -->
   <!-- <scope>source.python</scope> -->
 </snippet>
-', user_id: User.sample, language_id: Language.sample, editor_id: Editor.sample)}
+', user_id: User.first, language_id: Language.first, editor_id: Editor.first)}
 
   scenario "creating succesfully" do
     within (".snippet_form") do
       fill_in 'snippet_name', with: snippet.name
       fill_in 'snippet_description', with: snippet.description
-      fill_in 'snippet_code', with: snippet.code
-      fill_in 'language_id', with: language.id
+      fill_in :code , with: snippet.code
+      fill_in :language_id , with: language.id
       fill_in 'editor_id', with: editor.id
     end
     click_button "Create Snippet"
@@ -38,8 +40,8 @@ feature 'creating a snippet' do
     within (".snippet_form") do
       fill_in 'snippet_name', with: ''
       fill_in 'snippet_description', with: ''
-      fill_in 'snippet_code', with: ''
-      fill_in 'language_id', with: ''
+      fill_in :code , with: ''
+      fill_in :language_id , with: ''
       fill_in 'editor_id', with: ''
     end
     click_button "Create Snippet"
@@ -49,8 +51,8 @@ feature 'creating a snippet' do
     within (".snippet_form") do
       fill_in 'snippet_name', with: 'whatever'
       fill_in 'snippet_description', with: 'whatever'
-      fill_in 'snippet_code', with: snippet.code
-      fill_in 'language_id', with: 'whatever'
+      fill_in :code , with: snippet.code
+      fill_in :language_id , with: 'whatever'
       fill_in 'editor_id', with: 'whatever'
     end
     click_button "Create Snippet"
@@ -61,7 +63,7 @@ end
 
 feature 'editing a snippet' do
   background do
-    visit edit_snippet_path
+    visit edit_snippet_path(snippet)
   end
 
   let(:user) {User.create(email: 'test@test.com', password: 'testing', photo: 'test', username: 'testing')}
@@ -79,13 +81,13 @@ feature 'editing a snippet' do
   <!-- Optional: Set a scope to limit where the snippet will trigger -->
   <!-- <scope>source.python</scope> -->
 </snippet>
-', user_id: User.sample, language_id: Language.sample, editor_id: Editor.sample)}
+', user_id: User.first, language_id: Language.first, editor_id: Editor.first)}
   scenario "editing succesfully" do
     within (".snippet_form") do
       fill_in 'snippet_name', with: snippet.name
       fill_in 'snippet_description', with: snippet.description
-      fill_in 'snippet_code', with: snippet.code
-      fill_in 'language_id', with: language.id
+      fill_in :code , with: snippet.code
+      fill_in :language_id , with: language.id
       fill_in 'editor_id', with: editor.id
     end
     click_button "Confirm Edit"
@@ -96,8 +98,8 @@ feature 'editing a snippet' do
     within (".snippet_form") do
       fill_in 'snippet_name', with: ''
       fill_in 'snippet_description', with: ''
-      fill_in 'snippet_code', with: ''
-      fill_in 'language_id', with: ''
+      fill_in :code , with: ''
+      fill_in :language_id , with: ''
       fill_in 'editor_id', with: ''
     end
     click_button "Confirm Edit"
@@ -107,8 +109,8 @@ feature 'editing a snippet' do
     within (".snippet_form") do
       fill_in 'snippet_name', with: 'whatever'
       fill_in 'snippet_description', with: 'whatever'
-      fill_in 'snippet_code', with: snippet.code
-      fill_in 'language_id', with: 'whatever'
+      fill_in :code , with: snippet.code
+      fill_in :language_id , with: 'whatever'
       fill_in 'editor_id', with: 'whatever'
     end
     click_button "Edit Snippet"
