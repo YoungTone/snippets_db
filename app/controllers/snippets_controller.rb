@@ -6,6 +6,8 @@ class SnippetsController < ApplicationController
 
 	def new
 		@snippet = Snippet.new
+		@languages = Language.all.map {|lang| lang.name}
+		@editors = Editor.all
 	end
 
 	def create
