@@ -21,3 +21,16 @@ class ApplicationController < ActionController::Base
   helper_method :current_user #this makes it available for the view
 
 end
+
+
+
+
+
+
+
+
+
+
+
+
+

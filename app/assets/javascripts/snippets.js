@@ -31,7 +31,8 @@ $(function(){
 			});
 	});
 		
-	$("select").on('change', function(){
+	$("select:first").on('change', function(){
+
 		var selection = $(this).find('option:selected').val().toLowerCase();
 
 		if(special_mimetypes[selection]) {
@@ -45,5 +46,6 @@ $(function(){
         cm.save();
         return true; // return false to cancel form action
     });
+
 
 });

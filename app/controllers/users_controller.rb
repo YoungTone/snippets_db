@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
 
   before_action :prevent_login_signup, only: [:create]
-  before_action :set_user
 
   def edit
   end
@@ -14,6 +13,7 @@ class UsersController < ApplicationController
   end
 
   def delete
+    @user = User.find params[:id]
     @user.destroy && session[:user_id] = nil
     flash[:notice] = "Account deleted, You have been logged out"
     redirect_to root_path

@@ -1,2 +1,30 @@
-<h1>Snippets#edit</h1>
-<p>Find me in app/views/snippets/edit.html.erb</p>
+<% if @snippet.errors.any?%>
+	<% @snippet.errors.full_messages.each do |e|%>
+		<div class="alert alert-warning"><%= e %></div>
+	<% end %>	
+<% end %>
+<%= link_to "Go Back", :back %><br>
+<%= form_for @snippet, url: {action: "update"}, html:{class:"snippet_edit_form", role:"form"} do |f| %>
+	<div class="form-group">
+		<%= f.label "Snippet Name" %>
+		<%= f.text_field :name, class:"form-control", autofocus: true %>
+	</div>
+	<div class="form-group">
+		<%= f.label :description  %>
+		<%= f.text_field :description, class:"form-control" %>
+	</div>
+	<div class="form-group">
+	<%= f.label "Language: "  %> <%= f.collection_select(:language_id, @languages, :id, :name, :include_blank => true) %>
+	<%= f.label "Editor: "  %> <%= f.collection_select(:editor_id, @editors, :id, :name, :include_blank => true) %>
+
+	</div>
+	<div class="form-group">
+		<%= f.label :code  %>
+		<%= f.text_area :code, id: "codemirror" , class: "form-control" %>
+	</div>
+	
+	<div class="form-group actions">
+		<%= f.submit class:"btn btn-primary" %>
+	</div>
+<% end %>
+<%= button_to "Delete", snippet_path(@snippet), method: :delete, class: "btn btn-danger" %>

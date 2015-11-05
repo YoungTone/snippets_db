@@ -76,55 +76,128 @@
 	overflow: hidden;
 	position:relative;
 	transition: 0.2s ease-in-out;
+	&:hover {
+		cursor: pointer;
+		transform: scale(1.05);
+	}
+	.tags {
+		font-size: 15px;
+		padding:0;
+		li {
+			display: inline-block;
+			padding: 3px 8px;
+			margin: 0;
+			background: #666;
+			color: #FFF;
+			border-radius: 2px;
+		}
+	}
+	.body {
+		padding: 10px;
+	}
+	.title {
+		font-size: 2em;
+	}
+	.description {
+		font-size: 1.3em;
+		display: block;
+		margin-bottom: 15px;
+		height: 50px;
+		overflow: hidden;
+	  	text-overflow: ellipsis;
+	}
+	.meta {
+		padding: 10px;
+		background-color: #EEE;
+	}
 }
 
-.snippet-card:hover {
-	cursor: pointer;
-	transform: scale(1.05);
+.show-card {
+	border: 1px solid #CCC;
+	margin: 0 0 20px 0;
+	padding: 0;
+	border-radius: 4px;
+	box-shadow: 0px 2px 2px #DDD;
+	overflow: hidden;
+	position:relative;
+	transition: 0.2s ease-in-out;
 }
-.snippet-card i {
-	font-size: 3em;
+
+.icons {
+	max-height: 3em;
+	max-width: 4em;
+}
+
+.icon {
+	@extend .icons;
 	position: absolute;
 	top: 10px;
 	right: 10px;
 }
 
-.snippet-card .body {
-	padding: 10px;
+.tags {
+	img {	
+		display: inline;
+		position: static;
+		padding-left: 2px;	
+		height: 15px;
+	}
 }
 
-.snippet-card .title {
-	font-size: 2em;
+.info {
+	border: solid 1px #ccc;
 }
-
-.snippet-card .description {
-	font-size: 1.3em;
-	display: block;
-	margin-bottom: 15px;
-}
-
-.snippet-card .meta {
-	padding: 10px;
-	background-color: #EEE;
-}
-
-.snippet-card .tags {
-	padding:0;
-}
-
-.snippet-card .tags li {
-	display: inline-block;
-	padding: 3px 8px;
+.panel {
 	margin: 0;
-	background: #666;
-	color: #FFF;
-	border-radius: 2px;
+	h2 {
+		line-height: 1;
+		margin: 0;
+		padding: 0;
+	}
+}
+
+.row .col-sm-6 {
+	&:first-child {
+		padding-right: 0;
+	}
+	&:last-child {
+		padding-left: 0;
+	}
+	height: 100%;
+}
+
+.show {
+	height: 100%;
+}
+
+tr td {
+	text-align: center;
+	height: 4em;
+	&:first-child {
+		width: 75%;
+	}
+	&:last-child{
+		width: 25%;
+	}
+	img {
+		// max-height: 3em;
+		width: 3em;
+		margin: auto;
+	}
+}
+
+form p {
+	color: #999;
 }
 
 /* --------------- CODE MIRROR ---------------- */
 
-.CodeMirror {
+.CodeMirror,
+#codemirror {
 	border: 2px solid #DDD;
 	border-radius: 5px;
+	white-space: normal;
+	word-wrap: break-word;
+	height: auto;
 }
 

@@ -1,20 +1,28 @@
+<% if @snippet.errors.any?%>
+	<% @snippet.errors.full_messages.each do |e|%>
+		<div class="alert alert-warning"><%= e %></div>
+	<% end %>	
+<% end %>
+
 <%= form_for @snippet, url: user_snippets_path(@user), html:{class:"snippet_form", role:"form"} do |f| %>
 	<div class="form-group">
 		<%= f.label "Snippet Name" %>
+		<p>Ex. 'if-else'</p>
 		<%= f.text_field :name, class:"form-control", autofocus: true %>
 	</div>
 	<div class="form-group">
 		<%= f.label :description  %>
+		<p>Ex. 'must have x installed', 'creates a form'</p>
 		<%= f.text_field :description, class:"form-control" %>
 	</div>
 	<div class="form-group">
-
-		<%= f.select(:languages, @languages) %>
+	<%= f.label "Language: "  %> <%= f.collection_select(:language_id, @languages, :id, :name, :include_blank => true) %> 
+	<%= f.label "Text editor: "  %> <%= f.collection_select(:editor_id, @editors, :id, :name, :include_blank => true) %>
 
 	</div>
 	<div class="form-group">
-		<%= f.label :code, name: "code"  %>
-		<%= f.text_area :code, name: "code", id: "codemirror" ,class: "form-control" %>
+		<%= f.label :code  %>
+		<%= f.text_area :code, id: "codemirror" , class: "form-control" %>
 	</div>
 	
 	<div class="form-group actions">
