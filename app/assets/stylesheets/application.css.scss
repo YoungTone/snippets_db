@@ -15,7 +15,7 @@
  *= require codemirror
  *= require codemirror/themes/monokai
  */
-
+@import "bootstrap-sprockets";
 @import "bootswatch/Lumen/variables";
 @import "bootstrap";
 @import "bootswatch/Lumen/bootswatch";
