@@ -1,8 +1,7 @@
-<h1>Snippets#index</h1>
-<p>Find me in app/views/snippets/index.html.erb</p>
+<h1>View My Snippets</h1>
 <ul>
 	<% @snippets.each do |snip| %>
-	<li><%= snip.name %></li>
+	<li><%= snip.name %> <%= link_to "Edit", edit_snippet_path(snip) %></li>
 	<ul>
 		<li><%= snip.description %></li>
 		<li><pre><code>

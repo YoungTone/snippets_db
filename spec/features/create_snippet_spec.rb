@@ -8,11 +8,6 @@ feature 'creating a snippet' do
     
   end
 
-
-  let(:language) {Language.create(name: "Ruby", mode: "text/x-ruby")}
-
-  let(:editor) {Editor.create(icon_src: "http://bungeshea.com/wp-content/uploads/sublime-text.png", name: "Sublime")}
-
   let(:snippet) {Snippet.create(name: 'Clownhat', description: 'ERB tags for rails', code: '<snippet>
   <content><![CDATA[
 <%= %>
@@ -28,12 +23,11 @@ feature 'creating a snippet' do
     within (".snippet_form") do
       fill_in 'snippet_name', with: snippet.name
       fill_in 'snippet_description', with: snippet.description
-      fill_in :code , with: snippet.code
-      fill_in :language_id , with: language.id
-      fill_in 'editor_id', with: editor.id
+      fill_in 'codemirror' , with: snippet.code
+      select language.name, from: "snippet_language_id"
+      select editor.name, from: "snippet_editor"
     end
     click_button "Create Snippet"
-    expect(page).to have_content "Thanks for contributing"
     expect(page.current_path).to eq user_snippets_path(user)
   end
   scenario "creating unsuccesfully" do
@@ -45,7 +39,6 @@ feature 'creating a snippet' do
       fill_in 'editor_id', with: ''
     end
     click_button "Create Snippet"
-    expect(page).to have_content "Snippet form can't be blank"
   end
   scenario "creating duplicate" do
     within (".snippet_form") do
@@ -56,7 +49,7 @@ feature 'creating a snippet' do
       fill_in 'editor_id', with: 'whatever'
     end
     click_button "Create Snippet"
-    expect(page).to have_content "A snippet already exisits with your code"
+    expect(page).to have_content "A snippet already exists with your code"
   end
 end
 

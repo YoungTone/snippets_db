@@ -15,43 +15,50 @@ class SnippetsController < ApplicationController
 	def create
 		@user = User.find params[:user_id]
 		@snippet = @user.snippets.new(snippet_params)
+		@languages = Language.all
+		@editors = Editor.all
 		if @snippet.save
-			redirect_to user_snippets_path params[:user_id], flash: {notice: "Thanks for contributing"}
-		elsif params[:code].present? && Snippet.where(code: params[:code]).first
-			flash[:notice] = "A snippet already exisits with your code"
+			redirect_to user_snippets_path params[:user_id]
 		else
-			flash[:notice] = "Snippet form can't be blank"
 			render :new
 		end
 	end
 
 	def show
 		@snippet = Snippet.find params[:id]
+		@user = @snippet.user_id
+		@language = @snippet.language_id
+		@editor = @snippet.editor_id
 	end
 
 	def edit
+
+		@snippet = Snippet.find params[:id]
+		@user = @snippet.user_id
+		@languages = Language.all
+		@editors = Editor.all
 		@snippet = Snippet.find params[:id]
 	end
 
 	def update
 		@snippet = Snippet.find params[:id]
+		@user = @snippet.user_id
+		@languages = Language.all
+		@editors = Editor.all
+		@snippet = Snippet.find params[:id]
 		@snippet.update snippet_params
-		redirect_to snippets_path[:id]
 		if @snippet.save
-			flash[:notice] = "Edit Succesful"
-			redirect_to user_snippets_path[:user_id]
-		elsif params[:code].present? && Snippet.where(code: params[:code]).first
-			flash[:notice] = "A snippet already exisits with your code"
+			redirect_to user_snippets_path params[:user_id]
 		else
-			flash[:notice] = "Snippet form can't be blank"
-			render :edit
+			render :new
 		end
 	end
 
 	def destroy
-		@snippet = Snippet.find_by_id params[:id]
+		@snippet = Snippet.find params[:id]
+		@user = @snippet.user_id
 		@snippet.destroy
-		redirect_to user_snippets_path[:user_id]
+		redirect_to user_snippets_path(@user)
 	end
 
 	private
