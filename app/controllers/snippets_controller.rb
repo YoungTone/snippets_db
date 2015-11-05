@@ -1,54 +1,64 @@
 class SnippetsController < ApplicationController
 	def index
-		@snippets = Snippet.all
-		render :index
+		@user = User.find params[:user_id]
+		@snippets = @user.snippets
 	end
 
 	def new
-		@snippet = Snippet.new
-		@languages = Language.all.map {|lang| lang.name}
+		@user = User.find params[:user_id]
+		@snippet = @user.snippets.new
+		@languages = Language.all
 		@editors = Editor.all
+		# @user = User.first # this is only for tests
 	end
 
 	def create
-		@snippet = Snippet.new(snippet_params)
+		@user = User.find params[:user_id]
+		@snippet = @user.snippets.new(snippet_params)
+		@languages = Language.all
+		@editors = Editor.all
 		if @snippet.save
-			redirect_to user_snippet_path[:user_id], flash: {notice: "Thanks for contributing"}
-		elsif params[:code].present? && Snippet.where(code: params[:code]).first
-			flash[:notice] = "A snippet already exisits with your code"
+			redirect_to user_snippets_path params[:user_id]
 		else
-			flash[:notice] = "Snippet form can't be blank"
 			render :new
 		end
 	end
 
 	def show
 		@snippet = Snippet.find params[:id]
+		@user = @snippet.user_id
+		@language = @snippet.language_id
+		@editor = @snippet.editor_id
 	end
 
 	def edit
+
+		@snippet = Snippet.find params[:id]
+		@user = @snippet.user_id
+		@languages = Language.all
+		@editors = Editor.all
 		@snippet = Snippet.find params[:id]
 	end
 
 	def update
 		@snippet = Snippet.find params[:id]
+		@user = @snippet.user_id
+		@languages = Language.all
+		@editors = Editor.all
+		@snippet = Snippet.find params[:id]
 		@snippet.update snippet_params
-		redirect_to snippets_path[:id]
 		if @snippet.save
-			flash[:notice] = "Edit Succesful"
-			redirect_to user_snippets_path[:user_id]
-		elsif params[:code].present? && Snippet.where(code: params[:code]).first
-			flash[:notice] = "A snippet already exisits with your code"
+			redirect_to user_snippets_path params[:user_id]
 		else
-			flash[:notice] = "Snippet form can't be blank"
-			render :edit
+			render :new
 		end
 	end
 
 	def destroy
-		@snippet = Snippet.find_by_id params[:id]
+		@snippet = Snippet.find params[:id]
+		@user = @snippet.user_id
 		@snippet.destroy
-		redirect_to user_snippets_path[:user_id]
+		redirect_to user_snippets_path(@user)
 	end
 
 	private

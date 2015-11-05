@@ -25,9 +25,10 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'bootstrap-sass'
-gem 'bootswatch-rails'
 gem 'codemirror-rails'
+#Heroku
+gem 'rails_12factor', :group => :production
+gem 'puma'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
@@ -50,6 +51,7 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'shoulda'
+  gem 'dotenv-rails'
 end
 
 group :development do

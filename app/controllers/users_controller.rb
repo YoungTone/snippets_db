@@ -1,14 +1,22 @@
 class UsersController < ApplicationController
 
   before_action :prevent_login_signup, only: [:create]
+  before_action :set_user
 
-  def account
+  def edit
   end
 
   def update
+    @user.update user_params
+    if @user.save
+      flash[:notice] = "Account updated"
+    end
   end
 
   def delete
+    @user.destroy && session[:user_id] = nil
+    flash[:notice] = "Account deleted, You have been logged out"
+    redirect_to root_path
   end
 
   def create
@@ -25,6 +33,11 @@ class UsersController < ApplicationController
 
   private
 
+
+  def set_user
+    @user = User.find params[:id]
+  end
+
   def user_params
     params.require(:user).permit(
       :username,
@@ -34,8 +47,8 @@ class UsersController < ApplicationController
   end
 
   def ensure_logged_in
-     unless session[:id]
-       redirect_to login_path, alert: "Please log in"
-     end
-   end
- end
+    unless session[:id]
+      redirect_to login_path, alert: "Please log in"
+    end
+  end
+end
