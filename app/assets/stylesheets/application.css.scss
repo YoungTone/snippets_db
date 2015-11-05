@@ -1,0 +1,203 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require codemirror
+ *= require codemirror/themes/monokai
+ */
+
+@import "bootswatch/Lumen/variables";
+@import "bootstrap";
+@import "bootswatch/Lumen/bootswatch";
+@import url(https://fonts.googleapis.com/css?family=Grand+Hotel);
+@import url(https://fonts.googleapis.com/css?family=Lato);
+@import url(https://cdn.rawgit.com/konpa/devicon/89f2f44ba07ea3fff7e561c2142813b278c2d6c6/devicon.min.css);
+
+
+.snipper_heading, .navbar-brand {
+	display: inline-block;
+	padding: 0.2em;
+	font-family: 'Grand Hotel', sans-serif;
+	font-size: 8em;
+	font-weight: bold;
+	background: #f3c5bd;
+	background: -moz-linear-gradient(top,  #f3c5bd 0%, #e86c57 50%, #ea2803 51%, #ff6600 75%, #c72200 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f3c5bd), color-stop(50%,#e86c57), color-stop(51%,#ea2803), color-stop(75%,#ff6600), color-stop(100%,#c72200));
+	background: -webkit-linear-gradient(top,  #f3c5bd 0%,#e86c57 50%,#ea2803 51%,#ff6600 75%,#c72200 100%);
+	background: -o-linear-gradient(top,  #f3c5bd 0%,#e86c57 50%,#ea2803 51%,#ff6600 75%,#c72200 100%);
+	background: -ms-linear-gradient(top,  #f3c5bd 0%,#e86c57 50%,#ea2803 51%,#ff6600 75%,#c72200 100%);
+	background: linear-gradient(to bottom,  #f3c5bd 0%,#e86c57 50%,#ea2803 51%,#ff6600 75%,#c72200 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.navbar-brand {
+	font-size: 2.6em;
+	padding-top: 15px;
+}
+
+.page-header {
+	padding:0;
+	margin:0;
+	border-bottom: none;
+}
+
+.page-header small {
+	font-family: 'Lato', sans-serif;
+	font-size: 2em;
+	color: #777;
+	display: inline-block;
+}
+
+.nav .glyphicon {
+	font-size: 1.6em;
+	font-weight: bold;
+	padding: 5px;
+}
+
+/* --------------- SNIPPET CARD ---------------- */
+
+.snippet-card {
+	border: 1px solid #CCC;
+	margin: 0 0 20px 0;
+	padding: 0;
+	border-radius: 4px;
+	box-shadow: 0px 2px 2px #DDD;
+	overflow: hidden;
+	position:relative;
+	transition: 0.2s ease-in-out;
+	&:hover {
+		cursor: pointer;
+		transform: scale(1.05);
+	}
+	.tags {
+		font-size: 15px;
+		padding:0;
+		li {
+			display: inline-block;
+			padding: 3px 8px;
+			margin: 0;
+			background: #666;
+			color: #FFF;
+			border-radius: 2px;
+		}
+	}
+	.body {
+		padding: 10px;
+	}
+	.title {
+		font-size: 2em;
+	}
+	.description {
+		font-size: 1.3em;
+		display: block;
+		margin-bottom: 15px;
+		height: 50px;
+		overflow: hidden;
+	  	text-overflow: ellipsis;
+	}
+	.meta {
+		padding: 10px;
+		background-color: #EEE;
+	}
+}
+
+.show-card {
+	border: 1px solid #CCC;
+	margin: 0 0 20px 0;
+	padding: 0;
+	border-radius: 4px;
+	box-shadow: 0px 2px 2px #DDD;
+	overflow: hidden;
+	position:relative;
+	transition: 0.2s ease-in-out;
+}
+
+.icons {
+	max-height: 3em;
+	max-width: 4em;
+}
+
+.icon {
+	@extend .icons;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+
+.tags {
+	img {	
+		display: inline;
+		position: static;
+		padding-left: 2px;	
+		height: 15px;
+	}
+}
+
+.info {
+	border: solid 1px #ccc;
+}
+.panel {
+	margin: 0;
+	h2 {
+		line-height: 1;
+		margin: 0;
+		padding: 0;
+	}
+}
+
+.row .col-sm-6 {
+	&:first-child {
+		padding-right: 0;
+	}
+	&:last-child {
+		padding-left: 0;
+	}
+	height: 100%;
+}
+
+.show {
+	height: 100%;
+}
+
+tr td {
+	text-align: center;
+	height: 4em;
+	&:first-child {
+		width: 75%;
+	}
+	&:last-child{
+		width: 25%;
+	}
+	img {
+		// max-height: 3em;
+		width: 3em;
+		margin: auto;
+	}
+}
+
+form p {
+	color: #999;
+}
+
+/* --------------- CODE MIRROR ---------------- */
+
+.CodeMirror,
+#codemirror {
+	border: 2px solid #DDD;
+	border-radius: 5px;
+	white-space: normal;
+	word-wrap: break-word;
+	height: auto;
+}
+

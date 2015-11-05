@@ -11,6 +11,32 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
-//= require turbolinks
+//= require bootstrap-sprockets
+//= require codemirror
+//= require codemirror/modes/xml
+//= require codemirror/modes/htmlmixed
+//= require codemirror/modes/htmlembedded
+//= require codemirror/modes/ruby
+//= require codemirror/modes/haml
+//= require codemirror/modes/clike
+//= require codemirror/modes/css
+//= require codemirror/modes/django
+//= require codemirror/modes/haml
+//= require codemirror/modes/http
+//= require codemirror/modes/jade
+//= require codemirror/modes/javascript
+//= require codemirror/modes/perl
+//= require codemirror/modes/php
+//= require codemirror/modes/python
+//= require codemirror/modes/r
+//= require codemirror/modes/ruby
+//= require codemirror/modes/sass
+//= require codemirror/modes/shell
+//= require codemirror/modes/sql
+//= require codemirror/modes/swift
 //= require_tree .
+//= require turbolinks
+
+

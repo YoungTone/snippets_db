@@ -1,0 +1,24 @@
+<% if flash[:notice] %>
+<div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
+<%= form_for @user, url: signup_path, html: {class: "signup-form"} do |f| %>
+<%= render partial: "shared/errors", locals:{instance: @user} %>
+<div class="form-group">
+  <%= f.label :username, class: "control-label" %>
+  <%= f.text_field :username, class: "form-control", required: true %>
+</div>
+<div class="form-group">
+  <%= f.label :email, class: "control-label" %>
+  <%= f.email_field :email, class: "form-control", required: true %>
+</div>
+<div class="form-group">
+  <%= f.label :password, class: "control-label" %>
+  <%= f.password_field :password, class: "form-control", required: true %>
+</div>
+<%= f.submit "Sign Up", id: "submit-user", class:"btn btn-block btn-success text-center" %>
+<div class="form-group">
+	<br>
+	<p>Already an account? <%= link_to "Login here", login_path %></p>
+</div>
+<% end %>

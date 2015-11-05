@@ -1,0 +1,72 @@
+<span><h1>Show Snippet</h1>
+	<% if current_user = @user %>
+		<%= link_to "Edit Snippet", edit_snippet_path(@snippet), class: "btn btn-success" %>
+	<% end %>
+	<%= link_to "Go Back", :back, class: "btn btn-default" %></span>
+
+<div class="col-md-4">
+		<div class="show-card">
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Name</h3>
+		  </div>
+		  <div class="panel-body">
+		    <h2><%= @snippet.name %></h2> <br>
+
+		  </div>
+		</div>
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Created by</h3>
+		  </div>
+		  <div class="panel-body">
+		    @<%= @user.username %>
+		  </div>
+		</div>
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Description</h3>
+		  </div>
+		  <div class="panel-body">
+		    <%= @snippet.description %>
+		  </div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="panel panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Editor</h3>
+		  </div>
+		  <div class="panel-body">
+		    <table>
+		   	<tr>
+		   		<td> <%= @editor.name %> </td>
+		   		<td><%= image_tag @editor.icon_src %></td>
+		   	</tr>
+		   </table>
+		  </div>
+		</div>
+			</div>
+			<div class="col-sm-6">
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Language</h3>
+		  </div>
+		  <div class="panel-body">
+		   <table>
+		   	<tr>
+		   		<td> <%= @language.name %> </td>
+		   		<td><%= image_tag @language.icon %></td>
+		   	</tr>
+		   </table>
+		  </div>
+		</div>
+		</div>
+		</div>
+		</div>
+
+
+
+	</div>
+
+		<%= text_area_tag nil, @snippet.code, id: "codemirror", readonly: true %>

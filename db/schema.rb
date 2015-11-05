@@ -11,10 +11,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151102191452) do
+ActiveRecord::Schema.define(version: 20151105030111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "editors", force: :cascade do |t|
+    t.string   "icon_src"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "languages", force: :cascade do |t|
+    t.string   "mode"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "icon"
+  end
+
+  create_table "snippets", force: :cascade do |t|
+    t.string   "code"
+    t.string   "description"
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "language_id"
+    t.integer  "editor_id"
+  end
+
+  add_index "snippets", ["editor_id"], name: "index_snippets_on_editor_id", using: :btree
+  add_index "snippets", ["language_id"], name: "index_snippets_on_language_id", using: :btree
+  add_index "snippets", ["user_id"], name: "index_snippets_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
@@ -26,4 +56,7 @@ ActiveRecord::Schema.define(version: 20151102191452) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "snippets", "editors"
+  add_foreign_key "snippets", "languages"
+  add_foreign_key "snippets", "users"
 end
