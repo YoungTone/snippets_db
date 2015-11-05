@@ -1,3 +1,12 @@
+<% if flash[:notice] %>
+<div class="notice"><%= flash[:notice] %></div>
+<% end %>
+<% if @user.errors.any?%>
+  <% @user.errors.full_messages.each do |e|%>
+    <div class="alert alert-warning"><%= e %></div>
+  <% end %> 
+<% end %>
+
 <%= form_for @user, url: signup_path, html: {class: "signup-form"} do |f| %>
 <%= render partial: "shared/errors", locals:{instance: @user} %>
 <div class="form-group">
