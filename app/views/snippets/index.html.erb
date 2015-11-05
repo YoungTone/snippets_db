@@ -1,15 +1,21 @@
 <h1>View My Snippets</h1>
-<ul>
-	<% @snippets.each do |snip| %>
-	<li><%= link_to snip.name, snippet_path(snip) %></li>
-	<ul>
-		<li><%= snip.description %></li>
-		<li><pre><code>
-			<%= snip.code %>
-		</code></pre></li>
-		<li><%= snip.language_id %></li>
-		<li><%= snip.editor_id %></li>
-	</ul>
-	<% end %> <br>
-	<%= link_to "Go Back", :back %>
-</ul>
+
+<% @snippets.each do |snippet| %>
+<% @language = Language.find snippet.language_id  %>
+<% @editor = Editor.find snippet.editor_id  %>
+	<div class="col-md-4">
+		<div class="snippet-card">
+		<%= image_tag @language.icon, class: "icon" %>
+			<div class="body">
+				<h4 class="title"><%= link_to snippet.name, snippet_path(snippet) %></h4>
+				<span class="description"><%= snippet.description %></span>
+				<ul class="tags">
+					<li><%= image_tag @editor.icon_src %>	<%= @editor.name %></li>
+					<li><%= @language.name %></li>
+				</ul>
+			</div>
+			<div class="meta">@<%= @user.username %></div>
+		</div>
+	</div>
+<% end %>
+

@@ -1,98 +1,26 @@
 <div class="page-header">
-	<h1>Popular Snippets</h1>
+	<!-- <h1>Popular Snippets</h1> -->
+	<h1>All Snippets</h1>
 </div>
 
-<div class="row">
+<% @snippets.each do |snippet| %>
+<% @language = Language.find snippet.language_id  %>
+<% @editor = Editor.find snippet.editor_id  %>
+<% @user = User.find snippet.user_id  %>
 	<div class="col-md-4">
 		<div class="snippet-card">
-		<i class="devicon-cplusplus-plain colored"></i>
+		<%= image_tag @language.icon, class: "icon" %>
 			<div class="body">
-				<h4 class="title"><a href="#">C++ Snippet</a></h4>
-				<span class="description">Kogi four loko franzen, pickled dreamcatcher austin. Cardigan vegan pug bicycle rights, chillwave whatever 90's brunch swag readymade.</span>
+				<h4 class="title"><%= link_to snippet.name, snippet_path(snippet) %></h4>
+				<span class="description"><%= snippet.description %></span>
 				<ul class="tags">
-					<li>SublimeText</li>
-					<li>Atom</li>
-					<li>JavaScript</li>
+					<li><%= image_tag @editor.icon_src %>	<%= @editor.name %></li>
+					<li><%= @language.name %></li>
 				</ul>
 			</div>
-			<div class="meta">@Username</div>
+			<div class="meta">@<%= @user.username %></div>
 		</div>
 	</div>
-	<div class="col-md-4">
-		<div class="snippet-card">
-			<i class="devicon-angularjs-plain colored"></i>
-			<div class="body">
-				<h4 class="title"><a href="#">Angular Snippet</a></h4>
-				<span class="description">Trust fund asymmetrical cray, cronut lo-fi PBR&B scenester yr kogi letterpress tousled normcore post-ironic master cleanse wolf.</span>
-				<ul class="tags">
-					<li>SublimeText</li>
-					<li>Atom</li>
-					<li>JavaScript</li>
-				</ul>
-			</div>
-			<div class="meta">@Username</div>
-		</div>
-	</div>
-	<div class="col-md-4">
-		<div class="snippet-card">
-		<i class="devicon-coffeescript-original-wordmark colored"></i>
-			<div class="body">
-				<h4 class="title"><a href="#">CoffeeScript Snippet</a></h4>
-				<span class="description">You probably haven't heard of them pour-over dreamcatcher tousled, gluten-free brooklyn truffaut keffiyeh asymmetrical taxidermy williamsburg. </span>
-				<ul class="tags">
-					<li>SublimeText</li>
-					<li>Atom</li>
-					<li>JavaScript</li>
-				</ul>
-			</div>
-			<div class="meta">@Username</div>
-		</div>
-	</div>
-</div>
-<div class="row">
-	<div class="col-md-4">
-		<div class="snippet-card">
-		<i class="devicon-css3-plain-wordmark colored"></i>
-			<div class="body">
-				<h4 class="title"><a href="#">CSS3 Snippet</a></h4>
-				<span class="description">Trust fund asymmetrical cray, cronut lo-fi PBR&B scenester yr kogi letterpress tousled normcore post-ironic master cleanse wolf.</span>
-				<ul class="tags">
-					<li>SublimeText</li>
-					<li>Atom</li>
-					<li>JavaScript</li>
-				</ul>
-			</div>
-			<div class="meta">@Username</div>
-		</div>
-	</div>
-	<div class="col-md-4">
-		<div class="snippet-card">
-			<i class="devicon-html5-plain-wordmark colored"></i>
-			<div class="body">
-				<h4 class="title"><a href="#">HTML5 Snippet</a></h4>
-				<span class="description">Kale chips chillwave scenester, fixie skateboard tumblr ennui small batch. Drinking vinegar kale chips sriracha shabby chic. </span>
-				<ul class="tags">
-					<li>SublimeText</li>
-					<li>Atom</li>
-					<li>JavaScript</li>
-				</ul>
-			</div>
-			<div class="meta">@Username</div>
-		</div>
-	</div>
-	<div class="col-md-4">
-		<div class="snippet-card">
-		<i class="devicon-nodejs-plain colored"></i>
-			<div class="body">
-				<h4 class="title"><a href="#">NodeJS Snippet</a></h4>
-				<span class="description">Swag pitchfork chillwave, farm-to-table semiotics portland wayfarers waistcoat small batch next level kickstarter whatever bitters sustainable vegan.</span>
-				<ul class="tags">
-					<li>SublimeText</li>
-					<li>Atom</li>
-					<li>JavaScript</li>
-				</ul>
-			</div>
-			<div class="meta">@Username</div>
-		</div>
-	</div>
-</div>
+<% end %>
+	
+	
