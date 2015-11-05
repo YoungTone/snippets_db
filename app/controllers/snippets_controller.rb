@@ -48,7 +48,7 @@ class SnippetsController < ApplicationController
 		@snippet = Snippet.find params[:id]
 		@snippet.update snippet_params
 		if @snippet.save
-			redirect_to user_snippets_path params[:user_id]
+			redirect_to user_snippets_path(@user)
 		else
 			render :new
 		end

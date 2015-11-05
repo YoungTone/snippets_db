@@ -3,7 +3,7 @@
 		<div class="alert alert-warning"><%= e %></div>
 	<% end %>	
 <% end %>
-
+<%= link_to "Go Back", :back %><br>
 <%= form_for @snippet, url: {action: "update"}, html:{class:"snippet_edit_form", role:"form"} do |f| %>
 	<div class="form-group">
 		<%= f.label "Snippet Name" %>
