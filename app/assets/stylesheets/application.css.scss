@@ -186,11 +186,18 @@ tr td {
 	}
 }
 
+form p {
+	color: #999;
+}
+
 /* --------------- CODE MIRROR ---------------- */
 
-.CodeMirror {
+.CodeMirror,
+#codemirror {
 	border: 2px solid #DDD;
 	border-radius: 5px;
 	white-space: normal;
+	word-wrap: break-word;
+	height: auto;
 }
 
