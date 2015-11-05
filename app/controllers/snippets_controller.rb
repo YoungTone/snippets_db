@@ -26,9 +26,9 @@ class SnippetsController < ApplicationController
 
 	def show
 		@snippet = Snippet.find params[:id]
-		@user = @snippet.user_id
-		@language = @snippet.language_id
-		@editor = @snippet.editor_id
+		@user = User.find @snippet.user_id
+		@language = Language.find @snippet.language_id
+		@editor = Editor.find @snippet.editor_id
 	end
 
 	def edit

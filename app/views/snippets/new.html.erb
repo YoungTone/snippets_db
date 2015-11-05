@@ -14,8 +14,8 @@
 		<%= f.text_field :description, class:"form-control" %>
 	</div>
 	<div class="form-group">
-	<%= f.collection_select(:language_id, @languages, :id, :name) %>
-	<%= f.collection_select(:editor_id, @editors, :id, :name) %>
+	<%= f.label "Language: "  %> <%= f.collection_select(:language_id, @languages, :id, :name) %> 
+	<%= f.label "Text editor: "  %> <%= f.collection_select(:editor_id, @editors, :id, :name) %>
 
 	</div>
 	<div class="form-group">
