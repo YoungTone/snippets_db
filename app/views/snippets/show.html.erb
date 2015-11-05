@@ -1,4 +1,6 @@
-<h1>View A Snippet</h1>
+<h1>Show Snippet</h1>
+<%= link_to "Go Back", :back %> <br>
+<%= link_to "Edit Snippet", edit_snippet_path(@snippet) %>
 <ul>
 	<li><%= @snippet.name %></li>
 	<li><%= @snippet.description %></li>

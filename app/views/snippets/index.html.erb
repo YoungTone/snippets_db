@@ -1,7 +1,7 @@
 <h1>View My Snippets</h1>
 <ul>
 	<% @snippets.each do |snip| %>
-	<li><%= snip.name %> <%= link_to "Edit", edit_snippet_path(snip) %></li>
+	<li><%= link_to snip.name, snippet_path(snip) %></li>
 	<ul>
 		<li><%= snip.description %></li>
 		<li><pre><code>
@@ -10,5 +10,6 @@
 		<li><%= snip.language_id %></li>
 		<li><%= snip.editor_id %></li>
 	</ul>
-	<% end %>
+	<% end %> <br>
+	<%= link_to "Go Back", :back %>
 </ul>
